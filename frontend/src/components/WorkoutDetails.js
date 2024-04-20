@@ -2,12 +2,15 @@ import { useDispatch } from "react-redux";
 import { workoutDeleted } from "../features/workouts/workoutsSlice";
 import { formatDistance, subDays } from "date-fns";
 
+
+const react_api_url = process.env.REACT_APP_API_URL
+
 const WorkoutDetail = ({ workout }) => {
     
 
     const dispatch = useDispatch(); 
     const handleClick = async () => {
-        const response = await fetch("http://localhost:4000/api/workouts/" + workout._id, {
+        const response = await fetch(`${react_api_url}/api/workouts/${workout._id}`, {
             method: "DELETE"
         })
 

@@ -2,6 +2,8 @@ import {useState} from "react"
 import { useDispatch } from 'react-redux'
 import { workoutAdded } from "../features/workouts/workoutsSlice";
 
+const react_api_url = process.env.REACT_APP_API_URL 
+
 const WorkoutForm = () => {
     const [title, setTitle] = useState('');
     const [load, setLoad] = useState('');
@@ -13,7 +15,7 @@ const WorkoutForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const workout = {title, load, reps};
-        const response = await fetch('http://localhost:4000/api/workouts/', {
+        const response = await fetch(`${react_api_url}/api/workouts/`, {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {

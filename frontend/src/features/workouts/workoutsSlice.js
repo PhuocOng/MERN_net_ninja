@@ -1,8 +1,10 @@
 // src/features/workouts/workoutsSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
+const react_api_url = process.env.REACT_APP_API_URL 
+console.log('react_api_url', react_api_url)
 export const fetchWorkouts = createAsyncThunk('workouts/fetchWorkouts', async () => {
-  const response = await fetch("http://localhost:4000/api/workouts/")
+  const response = await fetch(`${react_api_url}/api/workouts/`)
   const data = await response.json()
   return data.workouts
 })
